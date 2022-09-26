@@ -20,6 +20,7 @@ namespace TelephoneDir.Data
             _db = client.GetDatabase(options.Value.Database);
         }
         public IMongoCollection<Report> reportCollection => _db.GetCollection<Report>("report");
+        public IMongoCollection<Contact> contactCollection => _db.GetCollection<Contact>("contact");
 
         public IEnumerable<Report> GetAllReport()
         {
@@ -34,8 +35,15 @@ namespace TelephoneDir.Data
 
         public void CreateReport(Report report)
         {
+            string location= report.detail.location;
+            var filterDefinition = Builders<Contact>.Filter.Eq(p => p.data, location);
+            var filterPersonList = contactCollection.Find(filterDefinition).ToList();
+            var personCount = contactCollection.Find(filterDefinition).ToList().Count();
+
+            report.detail.personCount = personCount;
+
+
             reportCollection.InsertOne(report);
         }
-
     }
 }

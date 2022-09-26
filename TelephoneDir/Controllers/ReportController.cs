@@ -29,15 +29,17 @@ namespace TelephoneDir.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreatePost(string location) // try catchin içine de alınacak
+        public IActionResult CreatePost(ReportDetail reportDetail) // try catchin içine de alınacak
         {
+
             Report report = new Report();
             report.time = DateTime.Now;
             report.status = false;
-            report.detail.location = location;
+            report.detail.location = reportDetail.location;
             _context.CreateReport(report);
             return RedirectToAction("Index");
         }
+
         [HttpGet]
         public IActionResult Details(int id)
         {
