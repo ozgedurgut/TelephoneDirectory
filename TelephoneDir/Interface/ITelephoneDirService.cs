@@ -12,7 +12,6 @@ namespace TelephoneDir.Interface
         IMongoCollection<Person> personCollection { get; }
         IEnumerable<Person> GetAllPerson();
         Person GetPersonDetails(string name);
-
         void Create(Person personData);
         void Update(string name, Person personData);
         void Delete(string name);

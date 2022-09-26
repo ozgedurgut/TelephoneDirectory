@@ -26,7 +26,7 @@ namespace TelephoneDir.Data
         {
             return personCollection.Find(a => true).ToList();
         }
-                public Person GetPersonDetails(string name)
+        public Person GetPersonDetails(string name)
         {
             var personDetails = personCollection.Find(m => m.name == name).FirstOrDefault();
             return personDetails;
