@@ -41,7 +41,7 @@ namespace TelephoneDir.Controllers
         }
 
         [HttpGet]
-        public IActionResult Details(int id)
+        public IActionResult Details(string id )
         {
             var reportDetail = _context.GetReportDetails(id);
             return View(reportDetail);

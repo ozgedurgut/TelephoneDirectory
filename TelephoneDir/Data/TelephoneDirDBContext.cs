@@ -21,6 +21,8 @@ namespace TelephoneDir.Data
 
         public IMongoCollection<Person> personCollection => _db.GetCollection<Person>("telephoned");
         public IMongoCollection<Contact> contactCollection => _db.GetCollection<Contact>("contact");
+        public IMongoCollection<ReportDetail> detailsCollection => _db.GetCollection<ReportDetail>("reportDetail");
+
 
         public IEnumerable<Person> GetAllPerson()
         {

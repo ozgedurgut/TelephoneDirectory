@@ -12,9 +12,10 @@ namespace TelephoneDir.Interface
 
         IMongoCollection<Report> reportCollection { get; }
         IEnumerable<Report> GetAllReport();
-        Report GetReportDetails(int id);
+        Report GetReportDetails(string id);
         void CreateReport(Report report);
-    //    void Update(int id, Report report);
-      
+       // object GetReportDetails(string id);
+        //    void Update(int id, Report report);
+
     }
 }

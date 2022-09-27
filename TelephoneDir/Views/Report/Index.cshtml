@@ -4,10 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Report Page</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Create Report </a>
 </p>
 <table class="table">
     <thead>
@@ -38,7 +38,7 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new {  id=item.id }) |
+                @Html.ActionLink("Details", "Details", new {  id = item.id }) |
             </td>
         </tr>
 }

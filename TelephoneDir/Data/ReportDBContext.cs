@@ -12,8 +12,6 @@ namespace TelephoneDir.Data
     public class ReportDBContext : IReportService
     {
         public readonly IMongoDatabase _db;
-
-
         public ReportDBContext(IOptions<Settings> options)
         {
             var client = new MongoClient(options.Value.ConnectionString);
@@ -21,18 +19,17 @@ namespace TelephoneDir.Data
         }
         public IMongoCollection<Report> reportCollection => _db.GetCollection<Report>("report");
         public IMongoCollection<Contact> contactCollection => _db.GetCollection<Contact>("contact");
+        public IMongoCollection<Contact> detailsCollection => _db.GetCollection<Contact>("reportDetail");
 
         public IEnumerable<Report> GetAllReport()
         {
             return reportCollection.Find(a => true).ToList();
         }
-
-        public Report GetReportDetails(int id)
+        public Report GetReportDetails(string id)
         {
-            var reportDetails = reportCollection.Find(m => m.id == id).FirstOrDefault();
+            var reportDetails = reportCollection.Find(m => m.id==id).FirstOrDefault();         
             return reportDetails;
         }
-
         public void CreateReport(Report report)
         {
             string location= report.detail.location;
@@ -42,8 +39,9 @@ namespace TelephoneDir.Data
 
             report.detail.personCount = personCount;
 
-
             reportCollection.InsertOne(report);
+
+            //return reportCollection.Find(a=>true).ToList();
         }
     }
 }
