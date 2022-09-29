@@ -27,6 +27,9 @@ namespace TelephoneDir
         {
             services.AddControllersWithViews();
             services.AddTransient<ITelephoneDirService, TelephoneDirDBContext>();
+            services.AddTransient<IReportService, ReportDBContext>();
+            services.AddTransient<IReportDetailsService, ReportDetailsDBContext>();
+
             services.Configure<Settings>(
                 options =>
                 {

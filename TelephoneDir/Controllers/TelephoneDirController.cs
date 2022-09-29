@@ -69,8 +69,6 @@ namespace TelephoneDir.Controllers
         {
             _context.Delete(name);
             return RedirectToAction("Index");
-
         }
-
     }
 }

@@ -22,11 +22,12 @@ namespace TelephoneDir.Data
         public IMongoCollection<Person> personCollection => _db.GetCollection<Person>("telephoned");
         public IMongoCollection<Contact> contactCollection => _db.GetCollection<Contact>("contact");
 
+
         public IEnumerable<Person> GetAllPerson()
         {
             return personCollection.Find(a => true).ToList();
         }
-                public Person GetPersonDetails(string name)
+        public Person GetPersonDetails(string name)
         {
             var personDetails = personCollection.Find(m => m.name == name).FirstOrDefault();
             return personDetails;

@@ -14,10 +14,8 @@ namespace TelephoneDir.Models
         public string name { get; set; }
         public string surname { get; set; }
         public string company { get; set; }
+
         public Contact contactData { get; set; }
-
-
-
-
+        //  public virtual ICollection<Contact> contactData { get; set; }
     }
 }
