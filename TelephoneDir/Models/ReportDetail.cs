@@ -10,8 +10,7 @@ namespace TelephoneDir.Models
     {
         [BsonId]
         [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
-        public String location { get; set; }
-
+        public string location { get; set; }
         public int personCount { get; set; }
         public int numberCount { get; set; }
     }

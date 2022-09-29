@@ -15,15 +15,23 @@ namespace TelephoneDir.Data
         public ReportDetailsDBContext(IOptions<Settings>options)
         {
             var client = new MongoClient(options.Value.ConnectionString);
-            _db = client.GetDatabase(options.Value.Database);
+            _db = client.GetDatabase("reportDetail");
+            //            _db = client.GetDatabase(options.Value.Database);
+
         }
 
+
+        public IMongoCollection<Person> personCollection => _db.GetCollection<Person>("telephoned");
+        public IMongoCollection<Contact> contactCollection => _db.GetCollection<Contact>("contact");
         public IMongoCollection<ReportDetail> detailsCollection => _db.GetCollection<ReportDetail>("reportDetail");
 
-        public IEnumerable<ReportDetail> GetAllReport()
+        //IMongoCollection<ReportDetail> IReportDetailsService.detailsCollection { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        public IEnumerable<ReportDetail> GetAllReportDetails()
         {
             return detailsCollection.Find(a => true).ToList();
         }
+
 
         public ReportDetail GetReportDetails(string location)
         {

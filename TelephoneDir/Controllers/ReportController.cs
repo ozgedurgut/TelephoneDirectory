@@ -19,6 +19,7 @@ namespace TelephoneDir.Controllers
 
         public IActionResult Index()
         {
+
             return View(_context.GetAllReport());
         }
 
@@ -29,15 +30,26 @@ namespace TelephoneDir.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreatePost(ReportDetail reportDetail) // try catchin içine de alınacak
+        public IActionResult CreatePost(ReportDetail reportDetail) 
         {
+            try
+            {
+                Report report = new Report();
+                report.time = DateTime.Now;
+                report.status = false;
+            //    report.detail.location = reportDetail.location;
+             /*   if (TelephoneDir.Models.Report.detail.get == null)
+                {
+                    return StatusCode(500, "Internal server error");
+                }*/
+                _context.CreateReport(report);
+                return RedirectToAction("Index");
+            }
 
-            Report report = new Report();
-            report.time = DateTime.Now;
-            report.status = false;
-            report.detail.location = reportDetail.location;
-            _context.CreateReport(report);
-            return RedirectToAction("Index");
+            catch (Exception)
+            {
+                return StatusCode(500, "Internal server error");
+            }
         }
 
         [HttpGet]

@@ -30,18 +30,21 @@ namespace TelephoneDir.Data
             var reportDetails = reportCollection.Find(m => m.id==id).FirstOrDefault();         
             return reportDetails;
         }
+
         public void CreateReport(Report report)
         {
+
             string location= report.detail.location;
             var filterDefinition = Builders<Contact>.Filter.Eq(p => p.data, location);
             var filterPersonList = contactCollection.Find(filterDefinition).ToList();
+
             var personCount = contactCollection.Find(filterDefinition).ToList().Count();
 
             report.detail.personCount = personCount;
 
             reportCollection.InsertOne(report);
 
-            //return reportCollection.Find(a=>true).ToList();
+           // return reportCollection.Find(a=>true).ToList();
         }
     }
 }

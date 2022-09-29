@@ -7,11 +7,11 @@ using TelephoneDir.Models;
 
 namespace TelephoneDir.Interface
 {
-    interface IReportDetailsService
+    public interface IReportDetailsService
     {
-
         IMongoCollection<ReportDetail> detailsCollection { get; }
-        IEnumerable<ReportDetail> GetAllReport();
+        IEnumerable<ReportDetail> GetAllReportDetails();
+      //  void Create(ReportDetail reportDetail);
         ReportDetail GetReportDetails(string id);
        
     }
