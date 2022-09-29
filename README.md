@@ -14,7 +14,7 @@ Basit bir telefon rehberi uygulaması oluşturulmuştur.
 ---
 
 ### Teknik Tasarım
-Kişiler: Sistemde teoril anlamda sınırsız sayıda kişi kaydı yapılabilir. Her kişiye bağlı iletişim bilgisi eklenebilir.
+Kişiler: Sistemde teorik anlamda sınırsız sayıda kişi kaydı yapılabilir. Her kişiye bağlı iletişim bilgisi eklenebilir.
 
 **Veri yapısındaki alanlar:**
 * UUID
